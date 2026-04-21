@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Нияз & Самит | История дружбы и закон Архимеда</title>
+    <!-- Современные шрифты с лёгким «ручным» оттенком -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Kalam:wght@300;400;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fef7e8;
+            background-image: radial-gradient(circle at 10% 20%, rgba(245, 225, 190, 0.3) 2%, transparent 2.5%),
+                              radial-gradient(circle at 85% 45%, rgba(210, 180, 140, 0.2) 1.5%, transparent 2%);
+            background-size: 38px 38px, 48px 48px;
+            font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+            color: #241f1a;
+            line-height: 1.5;
+        }
+
+        /* основной контейнер с "рукотворной" текстурой */
+        .notebook {
+            max-width: 1280px;
+            margin: 2rem auto;
+            padding: 2rem 2rem 3rem;
+            background: rgba(255, 252, 240, 0.92);
+            backdrop-filter: blur(1px);
+            border-radius: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,200,0.8);
+            border: 1px solid #ede3ce;
+        }
+
+        /* header с рукописным акцентом */
+        .handmade-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .handmade-header h1 {
+            font-family: 'Kalam', cursive;
+            font-size: 3.6rem;
+            font-weight: 700;
+            color: #aa7c4a;
+            background: linear-gradient(135deg, #b96f30, #7a4a1f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            transform: rotate(-0.3deg);
+            text-shadow: 4px 4px 12px rgba(100, 60, 10, 0.1);
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            font-family: 'Kalam', cursive;
+            background: #f3ecd9;
+            display: inline-block;
+            padding: 0.3rem 1.4rem;
+            border-radius: 60px;
+            color: #6b4c2c;
+            margin-top: 0.75rem;
+            border: 1px dashed #d4bc8a;
+            backdrop-filter: blur(2px);
+        }
+
+        /* современная сетка для истории */
+        .story-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .card-story {
+            flex: 1;
+            min-width: 260px;
+            background: #fffcf3;
+            border-radius: 2.5rem;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #f0e2ce;
+            box-shadow: 8px 8px 0 rgba(160, 120, 70, 0.08);
+        }
+
+        .card-story:hover {
+            transform: translateY(-6px);
+            box-shadow: 12px 12px 0 rgba(120, 80, 40, 0.12);
+            border-color: #e5cfae;
+        }
+
+        .avatar-icon {
+            font-size: 3rem;
+            background: #efe2cf;
+            width: 70px;
+            height: 70px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            border: 2px solid #fff3e0;
+        }
+
+        .card-story h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-weight: 600;
+            font-size: 1.7rem;
+            letter-spacing: -0.3px;
+            background: linear-gradient(145deg, #7a562e, #a76f3a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .card-story p {
+            color: #3b2c1d;
+            margin: 1rem 0;
+            font-weight: 450;
+        }
+
+        /* закон архимеда — главная фишка */
+        .archimedes-law {
+            background: #e9dfcc;
+            border-radius: 2rem;
+            padding: 1.6rem 2rem;
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.2rem;
+            border-left: 12px solid #b47c48;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+        }
+
+        .law-icon {
+            font-size: 3.4rem;
+        }
+
+        .law-text {
+            flex: 1;
+        }
+
+        .law-text h3 {
+            font-family: 'Kalam', cursive;
+            font-size: 1.7rem;
+            color: #5a3a1e;
+        }
+
+        .law-text p {
+            font-weight: 500;
+        }
+
+        .highlight {
+            background: #ffefcf;
+            padding: 0.1rem 0.3rem;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #bd7a3a;
+        }
+
+        /* таймлайн дружбы */
+        .timeline-friendship {
+            margin: 3rem 0 2rem;
+            background: #fff9ef;
+            padding: 1.5rem 2rem;
+            border-radius: 2rem;
+        }
+
+        .timeline-title {
+            font-family: 'Kalam', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #7a592f;
+        }
+
+        .timeline-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 150px;
+            background: #f9f0e2;
+            border-radius: 2rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #ecdbba;
+        }
+
+        .year {
+            font-weight: 800;
+            font-size: 1.3rem;
+            font-family: monospace;
+            background: #dbbc8c40;
+            display: inline-block;
+            padding: 0.1rem 1rem;
+            border-radius: 50px;
+        }
+
+        /* цитата про «покумекать» */
+        .think-quote {
+            background: #ffffffdb;
+            margin: 2rem 0;
+            padding: 1.5rem 2rem;
+            border-radius: 3rem;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.25rem;
+            border: 1px solid #f5e2c6;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            font-family: 'Kalam', cursive;
+        }
+
+        /* современные детали: галерея моментов */
+        .vibe-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .vibe-card {
+            background: #fff2e2;
+            padding: 0.8rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid #e7cfaf;
+            transition: 0.1s linear;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px dotted #e2cfae;
+            color: #7b623c;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .notebook {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            .handmade-header h1 {
+                font-size: 2.4rem;
+            }
+            .timeline-steps {
+                flex-direction: column;
+            }
+        }
+
+        /* кнопка "покумекать" с ручным эффектом */
+        .brain-button {
+            background: #f0e2cf;
+            border: none;
+            font-family: 'Kalam', cursive;
+            font-size: 1rem;
+            padding: 0.5rem 1.4rem;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #7a4a23;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .brain-button:hover {
+            background: #e5cfaf;
+            transform: scale(0.96);
+            box-shadow: 0 0 0 2px #dbbc8a;
+        }
+    </style>
+</head>
+<body>
+<div class="notebook">
+    <div class="handmade-header">
+        <h1>Нияз & Самит</h1>
+        <div class="subhead">
+            <i class="fas fa-footprints"></i> закон Архимеда · плотный обед · 9 лет дружбы <i class="fas fa-hand-holding-heart"></i>
+        </div>
+    </div>
+
+    <!-- главная история про дуэт -->
+    <div class="story-grid">
+        <div class="card-story">
+            <div class="avatar-icon"><i class="fas fa-user-astronaut" style="font-size: 2.5rem; color:#9b6a3a;"></i></div>
+            <h2>Нияз</h2>
+            <p>Философ еды и движения. После сытного плова или мантов Нияз знает: <strong>лежать — вредно</strong>. Именно он предложил «закон выталкивающей прогулки» — по аналогии с Архимедом: тело, съевшее плотный обед, стремится выйти в горизонтальное положение, но сила воли и дружеский шаг выталкивают к активному долголетию.</p>
+        </div>
+        <div class="card-story">
+            <div class="avatar-icon"><i class="fas fa-brain" style="font-size: 2.5rem; color:#9b6a3a;"></i></div>
+            <h2>Самит</h2>
+            <p>Инженер пищевых цепочек и стратег. Самит придумал формулу: <span class="highlight">(обед + покумекать) × прогулка = лёгкость</span>. Он верит, что после плотной трапезы нужно не просто идти, а думать вслух — обсуждать идеи, спорить и генерировать смыслы. Тогда жир не заплывает, а мысли парят, как выталкивающая сила в воде.</p>
+        </div>
+        <div class="card-story">
+            <div class="avatar-icon"><i class="fas fa-walking" style="font-size: 2.5rem; color:#9b6a3a;"></i></div>
+            <h2>Как продружили 9 лет</h2>
+            <p>Всё началось в 2016 году на кулинарном фестивале. Вместо того чтобы лежать на диване, они пошли гулять вдоль набережной, обсуждая силу Архимеда в человеческом теле. С тех пор «архимедовская ходьба» стала ритуалом. Девять лет подряд — каждый плотный обед завершается прогулкой на 30–60 минут, во время которой они покупают идеи, шутят и остаются в форме.</p>
+        </div>
+    </div>
+
+    <!-- ЗАКОН АРХИМЕДА - объяснение ходьбы -->
+    <div class="archimedes-law">
+        <div class="law-icon"><i class="fas fa-water"></i>⚖️</div>
+        <div class="law-text">
+            <h3>«Эврика! Не заплыть жиром — закон Архимеда в действии»</h3>
+            <p>Нияз и Самит трактуют старый принцип по-своему: <strong>на всякое тело, погружённое в сытный обед, действует выталкивающая сила прогулки.</strong> Чем плотнее еда, тем активнее надо двигаться, чтобы «вытеснить» тяжесть. Они ходят <span class="highlight">быстрым шагом ровно 48 минут</span> — за это время жировые отложения не успевают осесть, а кровь разгоняет энергию. Идеальный баланс между вкуснятиной и бодростью!</p>
+            <button class="brain-button" id="thinkButton"><i class="fas fa-lightbulb"></i> покумекать срочно</button>
+            <span id="wisdomMessage" style="margin-left: 1rem; font-size: 0.85rem; color:#b97f44;"></span>
+        </div>
+    </div>
+
+    <!-- как именно они ходят (история) -->
+    <div class="think-quote">
+        <i class="fas fa-quote-left" style="color:#cb9e6b; margin-right: 8px;"></i> 
+        Чтобы после плотного плова не заплыть жиром, нужно срочно покумекать и пройти 2 километра, обсуждая высокое. Архимед бы одобрил.
+        <i class="fas fa-quote-right" style="color:#cb9e6b; margin-left: 8px;"></i>
+        <div style="font-size:0.8rem; margin-top: 6px;">— из дневника прогулок Нияза и Самита</div>
+    </div>
+
+    <!-- таймлайн 9 лет дружбы -->
+    <div class="timeline-friendship">
+        <div class="timeline-title"><i class="fas fa-tree"></i> 9 сезонов прогулок <i class="fas fa-tree"></i></div>
+        <div class="timeline-steps">
+            <div class="step"><span class="year">2016</span><br>🍛 Первый обед: плов + философия</div>
+            <div class="step"><span class="year">2018</span><br>📸 Открыли #архимедwalk</div>
+            <div class="step"><span class="year">2021</span><br>🏆 500+ прогулок без пропусков</div>
+            <div class="step"><span class="year">2025</span><br>✨ 9 лет! до сих пор ходят и кумекают</div>
+        </div>
+        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; background: #efe2cf70; padding: 0.4rem; border-radius: 2rem;"><i class="fas fa-people-arrows"></i> Их секрет: никогда не гулять молча — обсуждают идеи, изобретают мемы и спорят о выталкивающей силе.</p>
+    </div>
+
+    <!-- галерея жизненных ритуалов (современные стикеры) -->
+    <div class="vibe-gallery">
+        <div class="vibe-card"><i class="fas fa-utensils"></i> плотный обед</div>
+        <div class="vibe-card"><i class="fas fa-person-walking-arrow-right"></i> закон Архимеда в деле</div>
+        <div class="vibe-card"><i class="fas fa-brain"></i> покумекать вдвоём</div>
+        <div class="vibe-card"><i class="fas fa-heartbeat"></i> не заплыть жиром</div>
+        <div class="vibe-card"><i class="fas fa-handshake"></i> 9 лет дружбы</div>
+    </div>
+
+    <!-- блок "как они продружили 9 лет" подробнее -->
+    <div style="background: #faf1e2; border-radius: 2rem; padding: 1.6rem; margin: 2rem 0;">
+        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <i class="fas fa-history" style="font-size: 2.2rem; color: #b47c48;"></i>
+            <h3 style="font-family: 'Space Grotesk';">Как не потерять друг друга за 9 лет?</h3>
+        </div>
+        <p style="margin-top: 0.8rem;">Нияз и Самит утверждают: <strong>«ритуал послеобеденной ходьбы стал нашим клеем»</strong>. Они никогда не отменяют прогулку, даже если идёт дождь или сильно хочется спать. За 9 лет они прошли около 5000 км вместе, придумали стартап про здоровое пищеварение, пережили кризисы и всё так же ходят по закону Архимеда. Дружба крепнет, когда вы вместе <span class="highlight">«покумекиваете»</span> на ходу и помогаете друг другу не заплыть жиром — в прямом и переносном смысле.</p>
+        <div style="margin-top: 1rem; font-style: italic; border-left: 3px solid #ca9a60; padding-left: 1rem;">«Если ты чувствуешь тяжесть после еды — не ложись, иди и думай вслух с другом. Архимед был прав: выталкивающая сила рождается в движении.» — Самит</div>
+    </div>
+
+    <footer class="footer-note">
+        <i class="fas fa-shoe-prints"></i> Сайт о дружбе, еде и законе Архимеда | ручная работа с теплом <i class="fas fa-feather-alt"></i><br>
+        Нияз & Самит — 9 лет вместе и 0 лишних килограммов (шутка, но чувствуют они себя отлично)
+    </footer>
+</div>
+
+<script>
+    // маленькая интерактивная кнопка "покумекать срочно" с мудрой фразой
+    const thinkBtn = document.getElementById('thinkButton');
+    const msgSpan = document.getElementById('wisdomMessage');
+    const messages = [
+        '🧠 "Покумекали: ходьба активирует липолиз!"',
+        '📖 "Закон Архимеда: выталкивающая сила прогулки = съеденный плов × 0.7"',
+        '🚶‍♂️ "Нияз и Самит советуют: 100 шагов на каждые 50 ккал обеда"',
+        '💡 "Жир боится разговоров о высоком во время ходьбы!"',
+        '🤝 "Девять лет дружбы — лучшее лекарство от лени после еды"'
+    ];
+    thinkBtn.addEventListener('click', () => {
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        msgSpan.innerHTML = randomMsg;
+        // эффект "покумекали"
+        thinkBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => { thinkBtn.style.transform = ''; }, 150);
+    });
+</script>
+
+</body>
+</html>
